@@ -1,0 +1,24 @@
+<form [formGroup]="plantForm" >
+    <mat-card-title>Task Manager App</mat-card-title>
+    <mat-card-subtitle>Update</mat-card-subtitle>
+    <br><br>
+    <div class="container">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" [(ngModel)]="foundPlant.name">
+            <mat-error *ngIf="name?.invalid">Need at least {{name?.errors?.['minlength']?.requiredLength}} characters.
+            </mat-error>
+
+        </mat-form-field>
+        <mat-form-field appearance="fill" >
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" [(ngModel)]="foundPlant.address">
+            <mat-error *ngIf="address?.invalid">Address is required.</mat-error>
+        </mat-form-field>  
+        
+        
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit(foundPlant)" [disabled]="plantForm?.invalid">Update</button>
+    </div>
+</form>
+

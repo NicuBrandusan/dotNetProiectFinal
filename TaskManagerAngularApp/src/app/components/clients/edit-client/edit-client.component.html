@@ -1,0 +1,31 @@
+<form [formGroup]="clientForm" >
+    <mat-card-title>Task Manager App</mat-card-title>
+    <mat-card-subtitle>Update</mat-card-subtitle>
+    <br><br>
+    <div class="container">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" [(ngModel)]="foundClient.name">
+            <mat-error *ngIf="name?.invalid">Need at least {{name?.errors?.['minlength']?.requiredLength}} characters.
+            </mat-error>
+
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill" >
+            <mat-label>Company</mat-label>
+            <textarea  matInput formControlName="company" [(ngModel)]="foundClient.company"></textarea>
+            <mat-error *ngIf="company?.invalid">Company is required.</mat-error>
+        </mat-form-field>  
+        
+        <mat-form-field appearance="fill" >
+            <mat-label>Email</mat-label>
+            <textarea  matInput formControlName="email" [(ngModel)]="foundClient.email"></textarea>
+            <mat-error *ngIf="email?.invalid">Email is required.</mat-error>
+        </mat-form-field> 
+        
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit(foundClient)" [disabled]="clientForm?.invalid">Update</button>
+    </div>
+</form>
+
+

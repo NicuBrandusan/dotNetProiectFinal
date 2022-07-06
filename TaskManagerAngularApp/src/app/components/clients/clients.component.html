@@ -1,0 +1,127 @@
+<mat-card class="main-card">
+    <mat-card-title>Depozit de Medicamente</mat-card-title>
+    <mat-card-subtitle>Wholesales</mat-card-subtitle>
+
+    <mat-card-content>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 todo-table">
+            
+            <ng-container matColumnDef="name">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef > Nume Farmacie </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+                    <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
+                        <input matInput name="name" [(ngModel)]="element.name">
+                    </mat-form-field>
+                    <ng-template #notEditing>
+                        {{element.name}}
+                    </ng-template>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="company">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Judet </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+                    <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
+                        <input matInput name="company" [(ngModel)]="element.company">
+                    </mat-form-field>
+                    <ng-template #notEditing>
+                        {{element.company}}
+                    </ng-template>
+                </td>
+            </ng-container>  
+            
+            <ng-container matColumnDef="email">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Email </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+                    <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
+                        <input matInput name="email" [(ngModel)]="element.email">
+                    </mat-form-field>
+                    <ng-template #notEditing>
+                        {{element.email}}
+                    </ng-template>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="operations">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Administrator companie </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+
+                    <div class="operations-div" *ngIf="!element.preparingDelete">
+                        <button mat-button (click)="goToClientEdit(element)">
+                            <mat-icon  class="todo-icon-operation" style="color:#e6b800;">
+                                editare
+                            </mat-icon>
+                        </button>
+
+                        <button mat-button (click)="element.preparingDelete = true">
+                            <mat-icon class="todo-icon-operation" style="color:#cc0000;">
+                                stergere
+                            </mat-icon>
+                        </button>
+
+                        <button mat-button (click)="goToClientDetail(element)">
+                            <mat-icon  class="todo-icon-operation" style="color:#3366ff;">
+                                info
+                            </mat-icon>
+                        </button>
+                        
+                    </div>
+                    <div *ngIf="element.preparingDelete" class="operations-div">
+                        Esti sigur?
+                        <button mat-icon-button (click)="deleteClient(element)" >
+                            <mat-icon style="color:#00cc00;" >check</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="element.preparingDelete = false">
+                            <mat-icon style="color:#cc0000;">cancel</mat-icon>
+                        </button>
+                    </div>
+                    
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card-content>
+
+    <br><br>
+
+    <div>
+        
+        <button mat-raised-button [routerLink]="['/clients/add-client']"  class="button-18">Adauga farmacie
+            <mat-icon class="todo-icon-operation" style="color:white;">
+                add_circle_outline
+            </mat-icon>
+        </button>    
+        
+
+        
+        <mat-card-actions>
+            <form class="example-form">
+            
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Filter:</mat-label>
+            <input matInput [(ngModel)] = "searchBy" name="searchBy">
+            </mat-form-field>
+            
+            </form>
+            <br />
+            <button mat-raised-button class="button-18" (click)="filterClient()">Cauta
+                <mat-icon class="todo-icon-operation" style="color:white;">
+                    search
+                </mat-icon>
+            </button>  
+            </mat-card-actions>
+            
+
+            
+    </div>
+    
+</mat-card>
+
+
+
+
+
+

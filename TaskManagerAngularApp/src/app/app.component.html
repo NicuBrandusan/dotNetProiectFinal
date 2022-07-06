@@ -1,0 +1,55 @@
+<mat-toolbar color="primary" class="example-toolbar">
+	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
+	<h1 class="example-app-name">Depozit de Medicamente</h1>
+</mat-toolbar>
+<mat-sidenav-container class="example-container" autosize>
+	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+		<mat-nav-list>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+				<span class="full-width" *ngIf="isExpanded || isShowing">Meniu</span>
+				<mat-icon mat-list-icon>home</mat-icon>
+				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+			</mat-list-item>
+			<div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+				
+				<a mat-list-item href="/clients">
+					<mat-icon aria-hidden="false" aria-label="Example home icon">handshake</mat-icon>Clienti Farmacii</a>
+				<a mat-list-item href="/plants">
+					<mat-icon aria-hidden="false" aria-label="Example home icon">warehouse</mat-icon>Puncte de lucru</a>
+				<a mat-list-item href="/teams">
+					<mat-icon aria-hidden="false" aria-label="Example home icon">group</mat-icon>Furnizori</a>
+				<a mat-list-item href="/employees">
+					<mat-icon aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon>Angajati</a>
+				<a mat-list-item href="/projects">
+					<mat-icon aria-hidden="false" aria-label="Example home icon">web</mat-icon>Sedinte</a>
+				<a mat-list-item href="/employee-tasks">
+					<mat-icon aria-hidden="false" aria-label="Example home icon">task</mat-icon>Business Plan</a>
+				
+				<mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent">
+					<span class="full-width" *ngIf="isExpanded || isShowing">
+						<mat-icon aria-hidden="false" aria-label="Example home icon">file_copy</mat-icon>Rapoarte</span>
+					<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+				</mat-list-item>
+				<div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || isExpanded">
+					<mat-list-item>Raport Vanzari</mat-list-item>
+					<mat-list-item>Raport Incasari</mat-list-item>
+				</div>
+			</div>
+		</mat-nav-list>
+    <mat-nav-list>
+</mat-nav-list>
+	</mat-sidenav>
+
+	<div class="example-sidenav-content">
+    	<router-outlet></router-outlet>
+	</div>
+
+</mat-sidenav-container>
+
+
+
+<!-- Copyright 2017 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
+
+<!-- <router-outlet></router-outlet> -->

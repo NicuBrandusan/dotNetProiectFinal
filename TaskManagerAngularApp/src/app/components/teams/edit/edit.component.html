@@ -1,0 +1,25 @@
+<form [formGroup]="teamForm" >
+    <mat-card-title>Task Manager App</mat-card-title>
+    <mat-card-subtitle>Update</mat-card-subtitle>
+    <br><br>
+    <div class="container">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" [(ngModel)]="foundTeam.name">
+            <mat-error *ngIf="name?.invalid">Need at least {{name?.errors?.['minlength']?.requiredLength}} characters.
+            </mat-error>
+
+        </mat-form-field>
+        <mat-form-field appearance="fill" >
+            <mat-label>Department</mat-label>
+            <input matInput formControlName="department" [(ngModel)]="foundTeam.department">
+            <mat-error *ngIf="department?.invalid">Department is required.</mat-error>
+        </mat-form-field>  
+        
+        
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit(foundTeam)" [disabled]="teamForm?.invalid">Update</button>
+    </div>
+</form>
+
+

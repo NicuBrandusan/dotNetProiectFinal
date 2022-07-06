@@ -1,0 +1,117 @@
+ <mat-card class="main-card">
+    <mat-card-title>Time Tracking App</mat-card-title>
+    <mat-card-subtitle>Existing items</mat-card-subtitle>
+
+    <mat-card-content>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 todo-table">
+            
+            <ng-container matColumnDef="name">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Name</th>
+                <td class="cell" mat-cell *matCellDef="let element">
+                    <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
+                        <input matInput name="name" [(ngModel)]="element.name">
+                    </mat-form-field>
+                    <ng-template #notEditing>
+                        {{element.name}}
+                    </ng-template>
+                </td>
+            </ng-container>
+        
+
+            <ng-container matColumnDef="department">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Department </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+                    <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
+                        <input matInput name="department" [(ngModel)]="element.department">
+                    </mat-form-field>
+                    <ng-template #notEditing>
+                        {{element.department}}
+                    </ng-template>
+                </td>
+            </ng-container>            
+
+            <ng-container matColumnDef="operations">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Operations </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+
+                    <div class="operations-div" *ngIf="!element.preparingDelete">
+                        <button mat-button (click)="goToTeamEdit(element)">
+                            <mat-icon  class="todo-icon-operation" style="color:#e6b800;">
+                                edit
+                            </mat-icon>
+                        </button>
+
+                        <button mat-button (click)="element.preparingDelete = true">
+                            <mat-icon class="todo-icon-operation" style="color:#cc0000;">
+                                delete
+                            </mat-icon>
+                        </button>
+
+                        <button mat-button (click)="goToTeamDetail(element)">
+                            <mat-icon  class="todo-icon-operation" style="color:#3366ff;">
+                                info
+                            </mat-icon>
+                        </button>
+                        
+                    </div>
+                    <div *ngIf="element.preparingDelete" class="operations-div">
+                        Are you sure?
+                        <button mat-icon-button (click)="deleteTeam(element)" >
+                            <mat-icon style="color:#00cc00;" >check</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="element.preparingDelete = false">
+                            <mat-icon style="color:#cc0000;">cancel</mat-icon>
+                        </button>
+                    </div>
+                    
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row of sortedData; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card-content>
+
+    <br><br>
+
+    <div>
+        
+        <button mat-raised-button [routerLink]="['/teams/add']"  class="button-18 ">Add team 
+            <mat-icon class="todo-icon-operation" style="color:white;">
+                add_circle_outline
+            </mat-icon>
+        </button>    
+        
+
+        
+        <mat-card-actions>
+            <form class="example-form">
+            
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Filter:</mat-label>
+            <input matInput [(ngModel)] = "searchBy" name="searchBy">
+            </mat-form-field>
+            
+            </form>
+            <br />
+            <button mat-raised-button class="button-18 " (click)="filterTeam()">Search
+                <mat-icon class="todo-icon-operation" style="color:white;">
+                    search
+                </mat-icon>
+            </button>  
+            
+            </mat-card-actions>
+            
+
+            
+    </div>
+    
+</mat-card>
+
+
+
+
+
+

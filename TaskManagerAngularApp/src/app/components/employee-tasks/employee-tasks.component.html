@@ -1,0 +1,153 @@
+<mat-card class="main-card">
+    <mat-card-title>Depozit de Medicamente</mat-card-title>
+    <mat-card-subtitle>Wholesales</mat-card-subtitle>
+
+    <mat-card-content>
+        
+    
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 todo-table">
+            
+            <ng-container matColumnDef="title">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef > Title </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+                    <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
+                        <input matInput name="title" [(ngModel)]="element.title">
+                    </mat-form-field>
+                    <ng-template #notEditing>
+                        {{element.title}}
+                    </ng-template>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="duration">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Price </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+                    <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
+                        <input matInput name="duration" [(ngModel)]="element.duration">
+                    </mat-form-field>
+                    <ng-template #notEditing>
+                        {{element.duration}}
+                    </ng-template>
+                </td>
+            </ng-container>  
+            
+            <ng-container matColumnDef="summary">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Summary </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+                    <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
+                        <input matInput name="summary" [(ngModel)]="element.summary">
+                    </mat-form-field>
+                    <ng-template #notEditing>
+                        {{element.summary}}
+                    </ng-template>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Status </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+                    <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
+                        <input matInput name="status" [(ngModel)]="element.status">
+                    </mat-form-field>
+                    <ng-template #notEditing>
+                        {{element.status}}
+                    </ng-template>
+                </td>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="employee">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Employee </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+                    <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
+                        <input matInput name="employee" [(ngModel)]="element.employee">
+                    </mat-form-field>
+                    <ng-template #notEditing>
+                        {{element.employee}}
+                    </ng-template>
+                </td>
+            </ng-container> -->
+
+            <ng-container matColumnDef="operations">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Operations </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+
+                    <div class="operations-div" *ngIf="!element.preparingDelete">
+                        <button mat-button (click)="goToEmployeeTaskEdit(element)">
+                            <mat-icon  class="todo-icon-operation" style="color:#e6b800;">
+                                edit
+                            </mat-icon>
+                        </button>
+
+                        <button mat-button (click)="element.preparingDelete = true">
+                            <mat-icon class="todo-icon-operation" style="color:#cc0000;">
+                                delete
+                            </mat-icon>
+                        </button>
+
+                        <button mat-button (click)="goToEmployeeTaskDetail(element)">
+                            <mat-icon  class="todo-icon-operation" style="color:#3366ff;">
+                                info
+                            </mat-icon>
+                        </button>
+                        
+                    </div>
+                    <div *ngIf="element.preparingDelete" class="operations-div">
+                        Are you sure?
+                        <button mat-icon-button (click)="deleteEmployeeTask(element)" >
+                            <mat-icon style="color:#00cc00;" >check</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="element.preparingDelete = false">
+                            <mat-icon style="color:#cc0000;">cancel</mat-icon>
+                        </button>
+                    </div>
+                    
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card-content>
+
+    <br><br>
+
+    <div>
+        
+        <button mat-raised-button [routerLink]="['/employee-tasks/add-employee-task']"  class="button-18">Add task 
+            <mat-icon class="todo-icon-operation" style="color:white;">
+                add_circle_outline
+            </mat-icon>
+        </button>    
+        
+
+        
+        <mat-card-actions>
+            <form class="example-form">
+            
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Filter:</mat-label>
+            <input matInput [(ngModel)] = "searchBy" name="searchBy">
+            </mat-form-field>
+            
+            </form>
+            <br />
+            <button mat-raised-button class="button-18" (click)="filterEmployeeTask()">Search
+                <mat-icon class="todo-icon-operation" style="color:white;">
+                    search
+                </mat-icon>
+            </button>  
+            </mat-card-actions>
+            
+
+            
+    </div>
+    
+</mat-card>
+
+
+
+
+
+

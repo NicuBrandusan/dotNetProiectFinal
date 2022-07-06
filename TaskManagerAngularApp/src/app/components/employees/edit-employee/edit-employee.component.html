@@ -1,0 +1,44 @@
+<form [formGroup]="employeeForm" >
+    <mat-card-title>Task Manager App</mat-card-title>
+    <mat-card-subtitle>Update</mat-card-subtitle>
+    <br><br>
+    <div class="container">
+
+    
+        <mat-form-field appearance="fill" >
+            <mat-label>Name</mat-label>
+            <input  matInput formControlName="name" [(ngModel)]="foundEmployee.name">
+            <mat-error *ngIf="name?.invalid">Name is required.</mat-error>
+        </mat-form-field>   
+        
+        <mat-form-field appearance="fill" >
+            <mat-label>Age</mat-label>
+            <input  matInput formControlName="age" [(ngModel)]="foundEmployee.age">
+            <mat-error *ngIf="age?.invalid">Age is required.</mat-error>
+        </mat-form-field> 
+
+        <mat-form-field appearance="fill" >
+            <mat-label>Email</mat-label>
+            <input  matInput formControlName="email" [(ngModel)]="foundEmployee.email">
+            <mat-error *ngIf="email?.invalid">Email is required.</mat-error>
+        </mat-form-field> 
+
+        <mat-form-field appearance="fill" >
+            <mat-label>Phone Number</mat-label>
+            <input  matInput formControlName="phoneNumber" [(ngModel)]="foundEmployee.phoneNumber">
+            <mat-error *ngIf="phoneNumber?.invalid">Phone Number is required.</mat-error>
+        </mat-form-field> 
+
+        <!-- <mat-form-field appearance="fill" >
+            <mat-label>Project</mat-label>
+            <input  matInput formControlName="project" [(ngModel)]="foundEmployee.project">
+            <mat-error *ngIf="project?.invalid">Project is required.</mat-error>
+        </mat-form-field>  -->
+
+        
+        
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit(foundEmployee)" [disabled]="employeeForm?.invalid">Update</button>
+    </div>
+</form>
+
+

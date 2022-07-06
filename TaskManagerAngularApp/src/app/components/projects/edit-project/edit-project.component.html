@@ -1,0 +1,37 @@
+<form [formGroup]="projectForm" >
+    <mat-card-title>Task Manager App</mat-card-title>
+    <mat-card-subtitle>Update</mat-card-subtitle>
+    <br><br>
+    <div class="container">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" [(ngModel)]="foundProject.name">
+            <mat-error *ngIf="name?.invalid">Need at least {{name?.errors?.['minlength']?.requiredLength}} characters.
+            </mat-error>
+
+        </mat-form-field>
+        <mat-form-field appearance="fill" >
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" [(ngModel)]="foundProject.description">
+            <mat-error *ngIf="description?.invalid">Description is required.</mat-error>
+        </mat-form-field> 
+        
+        <!-- <mat-form-field appearance="fill" >
+            <mat-label>Client</mat-label>
+            <input matInput formControlName="client" [(ngModel)]="foundProject.client">
+            <mat-error *ngIf="client?.invalid">Client is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" >
+            <mat-label>Plant</mat-label>
+            <input matInput formControlName="plant" [(ngModel)]="foundProject.plant">
+            <mat-error *ngIf="plant?.invalid">Plant is required.</mat-error>
+        </mat-form-field> -->
+        
+        
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit(foundProject)" [disabled]="projectForm?.invalid">Update</button>
+    </div>
+</form>
+
+

@@ -1,0 +1,45 @@
+<form [formGroup]="employeeForm" >
+    <mat-card-title>Task Manager</mat-card-title>
+    <mat-card-subtitle>Add new employee</mat-card-subtitle>
+    <br><br>
+    <div class="container">
+
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="name?.invalid">Need at least {{name?.errors?.['minlength']?.requiredLength}} characters.
+            </mat-error>
+
+        </mat-form-field>
+        <mat-form-field appearance="fill" >
+            <mat-label>Age</mat-label>
+            <textarea  matInput formControlName="age"></textarea>
+            <mat-error *ngIf="age?.invalid">Age is required.</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill" >
+            <mat-label>Email</mat-label>
+            <textarea  matInput formControlName="email"></textarea>
+            <mat-error *ngIf="email?.invalid">Email is required.</mat-error>
+        </mat-form-field>  
+
+        <mat-form-field appearance="fill" >
+            <mat-label>Phone Number</mat-label>
+            <textarea  matInput formControlName="phoneNumber"></textarea>
+            <mat-error *ngIf="phoneNumber?.invalid">Phone Number is required.</mat-error>
+        </mat-form-field>  
+
+        <!-- <mat-form-field appearance="fill" >
+            <mat-label>Project</mat-label>
+            <textarea  matInput formControlName="project"></textarea>
+            <mat-error *ngIf="project?.invalid">Project is required.</mat-error>
+        </mat-form-field>   -->
+
+            
+        <br><br>
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" [disabled]="employeeForm?.invalid">Add</button>
+    </div>
+</form>
+
+
