@@ -1,0 +1,36 @@
+<form [formGroup]="employeeTaskForm" >
+    <mat-card-title>Task Manager</mat-card-title>
+    <mat-card-subtitle>Adauga business plan nou</mat-card-subtitle>
+    <br><br>
+    <div class="container">
+
+        <mat-form-field appearance="fill" >
+            <mat-label>Title</mat-label>
+            <textarea  matInput formControlName="title"></textarea>
+            <mat-error *ngIf="title?.invalid">Title is required.</mat-error>
+        </mat-form-field>   
+        
+        <mat-form-field appearance="fill" >
+            <mat-label>Duration</mat-label>
+            <textarea  matInput formControlName="duration"></textarea>
+            <mat-error *ngIf="duration?.invalid">Duration is required.</mat-error>
+        </mat-form-field> 
+
+        <mat-form-field appearance="fill" >
+            <mat-label>Summary</mat-label>
+            <textarea  matInput formControlName="summary"></textarea>
+            <mat-error *ngIf="summary?.invalid">Summary is required.</mat-error>
+        </mat-form-field> 
+
+        <mat-form-field appearance="fill" >
+            <mat-label>Status</mat-label>
+            <textarea  matInput formControlName="status"></textarea>
+            <mat-error *ngIf="status?.invalid">Status is required.</mat-error>
+        </mat-form-field> 
+            
+        <br><br>
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" [disabled]="employeeTaskForm?.invalid">Add</button>
+    </div>
+</form>
+
+

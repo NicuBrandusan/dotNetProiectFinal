@@ -3,11 +3,11 @@
     <mat-card-subtitle>Existing items</mat-card-subtitle>
 
     <mat-card-content>
-        
+
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 todo-table">
             
             <ng-container matColumnDef="name">
-                <th class="header-cell" mat-header-cell *matHeaderCellDef > Nume </th>
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Name</th>
                 <td class="cell" mat-cell *matCellDef="let element">
                     <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
                         <input matInput name="name" [(ngModel)]="element.name">
@@ -17,25 +17,26 @@
                     </ng-template>
                 </td>
             </ng-container>
+        
 
-            <ng-container matColumnDef="address">
-                <th class="header-cell" mat-header-cell *matHeaderCellDef> Adresa </th>
+            <ng-container matColumnDef="department">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Department </th>
                 <td class="cell" mat-cell *matCellDef="let element">
                     <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
-                        <input matInput name="address" [(ngModel)]="element.address">
+                        <input matInput name="department" [(ngModel)]="element.department">
                     </mat-form-field>
                     <ng-template #notEditing>
-                        {{element.address}}
+                        {{element.department}}
                     </ng-template>
                 </td>
-            </ng-container>  
+            </ng-container>            
 
             <ng-container matColumnDef="operations">
                 <th class="header-cell" mat-header-cell *matHeaderCellDef> Operatii </th>
                 <td class="cell" mat-cell *matCellDef="let element">
 
                     <div class="operations-div" *ngIf="!element.preparingDelete">
-                        <button mat-button (click)="goToPlantEdit(element)">
+                        <button mat-button (click)="goToFurnizorEdit(element)">
                             <mat-icon  class="todo-icon-operation" style="color:#e6b800;">
                                 edit
                             </mat-icon>
@@ -47,7 +48,7 @@
                             </mat-icon>
                         </button>
 
-                        <button mat-button (click)="goToPlantDetail(element)">
+                        <button mat-button (click)="goToTeamDetail(element)">
                             <mat-icon  class="todo-icon-operation" style="color:#3366ff;">
                                 info
                             </mat-icon>
@@ -56,7 +57,7 @@
                     </div>
                     <div *ngIf="element.preparingDelete" class="operations-div">
                         Are you sure?
-                        <button mat-icon-button (click)="deletePlant(element)" >
+                        <button mat-icon-button (click)="deleteTeam(element)" >
                             <mat-icon style="color:#00cc00;" >check</mat-icon>
                         </button>
                         <button mat-icon-button (click)="element.preparingDelete = false">
@@ -68,7 +69,7 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-row *matRowDef="let row of sortedData; columns: displayedColumns;"></tr>
         </table>
     </mat-card-content>
 
@@ -76,15 +77,18 @@
 
     <div>
         
-        <button mat-raised-button [routerLink]="['/plants/add-plant']"  class="button-18">Adauga punct de lucru 
+        <button mat-raised-button [routerLink]="['/furnizori/add-furnizor']"  class="button-18 ">Adauga furnizor 
             <mat-icon class="todo-icon-operation" style="color:white;">
                 add_circle_outline
             </mat-icon>
         </button>    
-               
+        
+
+        
         <mat-card-actions>
             <form class="example-form">
-                       
+            
+            
             <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Filter:</mat-label>
             <input matInput [(ngModel)] = "searchBy" name="searchBy">
@@ -92,13 +96,16 @@
             
             </form>
             <br />
-            <button mat-raised-button class="button-18" (click)="filterPlant()">Search
+            <button mat-raised-button class="button-18 " (click)="filterTeam()">Search
                 <mat-icon class="todo-icon-operation" style="color:white;">
                     search
                 </mat-icon>
             </button>  
+            
             </mat-card-actions>
-                
+            
+
+            
     </div>
     
 </mat-card>

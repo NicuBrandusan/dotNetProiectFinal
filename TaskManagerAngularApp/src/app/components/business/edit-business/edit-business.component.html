@@ -1,0 +1,37 @@
+<form [formGroup]="employeeTaskForm" >
+    <mat-card-title>Task Manager App</mat-card-title>
+    <mat-card-subtitle>Update</mat-card-subtitle>
+    <br><br>
+    <div class="container">
+
+    
+        <mat-form-field appearance="fill" >
+            <mat-label>Title</mat-label>
+            <input  matInput formControlName="title" [(ngModel)]="foundEmployeeTask.title">
+            <mat-error *ngIf="title?.invalid">Title is required.</mat-error>
+        </mat-form-field>   
+        
+        <mat-form-field appearance="fill" >
+            <mat-label>Duration</mat-label>
+            <input  matInput formControlName="duration" [(ngModel)]="foundEmployeeTask.duration">
+            <mat-error *ngIf="duration?.invalid">Duration is required.</mat-error>
+        </mat-form-field> 
+
+        <mat-form-field appearance="fill" >
+            <mat-label>Summary</mat-label>
+            <input  matInput formControlName="summary" [(ngModel)]="foundEmployeeTask.summary">
+            <mat-error *ngIf="summary?.invalid">Summary is required.</mat-error>
+        </mat-form-field> 
+
+        <mat-form-field appearance="fill" >
+            <mat-label>Status</mat-label>
+            <input  matInput formControlName="status" [(ngModel)]="foundEmployeeTask.status">
+            <mat-error *ngIf="status?.invalid">Status is required.</mat-error>
+        </mat-form-field> 
+        
+        
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit(foundEmployeeTask)" [disabled]="employeeTaskForm?.invalid">Update</button>
+    </div>
+</form>
+
+

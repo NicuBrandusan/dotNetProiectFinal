@@ -1,41 +1,67 @@
 <mat-card class="main-card">
-    <mat-card-title>Time Tracking App</mat-card-title>
-    <mat-card-subtitle>Existing items</mat-card-subtitle>
+    <mat-card-title>Depozit de Medicamente</mat-card-title>
+    <mat-card-subtitle>Wholesales</mat-card-subtitle>
 
     <mat-card-content>
         
+    
+
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 todo-table">
             
-            <ng-container matColumnDef="name">
-                <th class="header-cell" mat-header-cell *matHeaderCellDef > Nume </th>
+            <ng-container matColumnDef="title">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef > Title </th>
                 <td class="cell" mat-cell *matCellDef="let element">
                     <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
-                        <input matInput name="name" [(ngModel)]="element.name">
+                        <input matInput name="title" [(ngModel)]="element.title">
                     </mat-form-field>
                     <ng-template #notEditing>
-                        {{element.name}}
+                        {{element.title}}
                     </ng-template>
                 </td>
             </ng-container>
 
-            <ng-container matColumnDef="address">
-                <th class="header-cell" mat-header-cell *matHeaderCellDef> Adresa </th>
+            <ng-container matColumnDef="duration">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Price </th>
                 <td class="cell" mat-cell *matCellDef="let element">
                     <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
-                        <input matInput name="address" [(ngModel)]="element.address">
+                        <input matInput name="duration" [(ngModel)]="element.duration">
                     </mat-form-field>
                     <ng-template #notEditing>
-                        {{element.address}}
+                        {{element.duration}}
                     </ng-template>
                 </td>
             </ng-container>  
+            
+            <ng-container matColumnDef="summary">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Summary </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+                    <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
+                        <input matInput name="summary" [(ngModel)]="element.summary">
+                    </mat-form-field>
+                    <ng-template #notEditing>
+                        {{element.summary}}
+                    </ng-template>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th class="header-cell" mat-header-cell *matHeaderCellDef> Status </th>
+                <td class="cell" mat-cell *matCellDef="let element">
+                    <mat-form-field *ngIf="element.isEditing; else notEditing" appearance="fill">
+                        <input matInput name="status" [(ngModel)]="element.status">
+                    </mat-form-field>
+                    <ng-template #notEditing>
+                        {{element.status}}
+                    </ng-template>
+                </td>
+            </ng-container>
 
             <ng-container matColumnDef="operations">
                 <th class="header-cell" mat-header-cell *matHeaderCellDef> Operatii </th>
                 <td class="cell" mat-cell *matCellDef="let element">
 
                     <div class="operations-div" *ngIf="!element.preparingDelete">
-                        <button mat-button (click)="goToPlantEdit(element)">
+                        <button mat-button (click)="goToBusinessEdit(element)">
                             <mat-icon  class="todo-icon-operation" style="color:#e6b800;">
                                 edit
                             </mat-icon>
@@ -47,7 +73,7 @@
                             </mat-icon>
                         </button>
 
-                        <button mat-button (click)="goToPlantDetail(element)">
+                        <button mat-button (click)="goToBusinessDetail(element)">
                             <mat-icon  class="todo-icon-operation" style="color:#3366ff;">
                                 info
                             </mat-icon>
@@ -56,7 +82,7 @@
                     </div>
                     <div *ngIf="element.preparingDelete" class="operations-div">
                         Are you sure?
-                        <button mat-icon-button (click)="deletePlant(element)" >
+                        <button mat-icon-button (click)="deleteEmployeeTask(element)" >
                             <mat-icon style="color:#00cc00;" >check</mat-icon>
                         </button>
                         <button mat-icon-button (click)="element.preparingDelete = false">
@@ -76,15 +102,18 @@
 
     <div>
         
-        <button mat-raised-button [routerLink]="['/plants/add-plant']"  class="button-18">Adauga punct de lucru 
+        <button mat-raised-button [routerLink]="['/business/add-business']"  class="button-18">Adauga business
             <mat-icon class="todo-icon-operation" style="color:white;">
                 add_circle_outline
             </mat-icon>
         </button>    
-               
+        
+
+        
         <mat-card-actions>
             <form class="example-form">
-                       
+            
+            
             <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Filter:</mat-label>
             <input matInput [(ngModel)] = "searchBy" name="searchBy">
@@ -92,13 +121,15 @@
             
             </form>
             <br />
-            <button mat-raised-button class="button-18" (click)="filterPlant()">Search
+            <button mat-raised-button class="button-18" (click)="filterEmployeeTask()">Search
                 <mat-icon class="todo-icon-operation" style="color:white;">
                     search
                 </mat-icon>
             </button>  
             </mat-card-actions>
-                
+            
+
+            
     </div>
     
 </mat-card>

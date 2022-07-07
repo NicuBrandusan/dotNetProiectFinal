@@ -1,0 +1,27 @@
+<form [formGroup]="teamForm" >
+    <mat-card-title>Depozit de medicamente</mat-card-title>
+    <mat-card-subtitle>Adauga furnizor nou</mat-card-subtitle>
+    <br><br>
+    <div class="container">
+
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="name?.invalid">Need at least {{name?.errors?.['minlength']?.requiredLength}} characters.
+            </mat-error>
+
+        </mat-form-field>
+        <mat-form-field appearance="fill" >
+            <mat-label>Department</mat-label>
+            <textarea  matInput formControlName="department"></textarea>
+            <mat-error *ngIf="department?.invalid">Department is required.</mat-error>
+        </mat-form-field>        
+
+            
+        <br><br>
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" [disabled]="teamForm?.invalid">Add</button>
+    </div>
+</form>
+
+

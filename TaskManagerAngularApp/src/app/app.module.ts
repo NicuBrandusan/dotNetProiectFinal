@@ -12,6 +12,9 @@ import { EmployeeTasksComponent } from './components/employee-tasks/employee-tas
 import { ProjectsComponent } from './components/projects/projects.component';
 import { PlantsComponent } from './components/plants/plants.component';
 import { TeamsComponent } from './components/teams/teams.component';
+import { FurnizoriComponent } from './components/furnizori/furnizori.component';
+import { SedinteComponent } from './components/sedinte/sedinte.component';
+import { BusinessComponent } from './components/business/business.component';
 
 
 import { AddComponent } from './components/teams/add/add.component';
@@ -20,6 +23,10 @@ import { AddEmployeeTaskComponent } from './components/employee-tasks/add-employ
 import { AddEmployeeComponent } from './components/employees/add-employee/add-employee.component';
 import { AddPlantComponent } from './components/plants/add-plant/add-plant.component';
 import { AddProjectComponent } from './components/projects/add-project/add-project.component';
+import { AddFurnizorComponent } from './components/furnizori/add-furnizor/add-furnizor.component';
+import { AddSedintaComponent } from './components/sedinte/add-sedinta/add-sedinta.component';
+import { AddBusinessComponent } from './components/business/add-business/add-business.component';
+
 
 import { EditComponent } from './components/teams/edit/edit.component';
 import { EditClientComponent } from './components/clients/edit-client/edit-client.component';
@@ -27,6 +34,9 @@ import { EditEmployeeTaskComponent } from './components/employee-tasks/edit-empl
 import { EditEmployeeComponent } from './components/employees/edit-employee/edit-employee.component';
 import { EditPlantComponent } from './components/plants/edit-plant/edit-plant.component';
 import { EditProjectComponent } from './components/projects/edit-project/edit-project.component';
+import { EditFurnizorComponent } from './components/furnizori/edit-furnizor/edit-furnizor.component';
+import { EditSedintaComponent } from './components/sedinte/edit-sedinta/edit-sedinta.component';
+import { EditBusinessComponent } from './components/business/edit-business/edit-business.component';
 
 
 import { HttpClientModule} from '@angular/common/http';
@@ -44,6 +54,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule} from '@angular/material/list';
 import { NgbdSortableHeader } from './directives/sortable.directive';
 import { DownloadFileService } from './download-file.service';
+
 
 
 
@@ -75,7 +86,16 @@ import { DownloadFileService } from './download-file.service';
     AddPlantComponent,
     EditPlantComponent,
 
-    NgbdSortableHeader
+    NgbdSortableHeader,
+      FurnizoriComponent,
+      AddFurnizorComponent,
+      EditFurnizorComponent,
+      SedinteComponent,
+      AddSedintaComponent,
+      EditSedintaComponent,
+      BusinessComponent,
+      EditBusinessComponent,
+      AddBusinessComponent
     
   ],
   imports: [

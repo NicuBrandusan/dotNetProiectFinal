@@ -1,28 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\helpdesk_admin\\Desktop\\dotNet\\proiect\\TaskManager\\TaskManager.csproj": {}
+    "D:\\DAN\\Facultate\\INFO\\DotNet\\proiectTest\\dotNetProiectFinal\\TaskManager\\TaskManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\helpdesk_admin\\Desktop\\dotNet\\proiect\\TaskManager\\TaskManager.csproj": {
+    "D:\\DAN\\Facultate\\INFO\\DotNet\\proiectTest\\dotNetProiectFinal\\TaskManager\\TaskManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\helpdesk_admin\\Desktop\\dotNet\\proiect\\TaskManager\\TaskManager.csproj",
+        "projectUniqueName": "D:\\DAN\\Facultate\\INFO\\DotNet\\proiectTest\\dotNetProiectFinal\\TaskManager\\TaskManager.csproj",
         "projectName": "TaskManager",
-        "projectPath": "C:\\Users\\helpdesk_admin\\Desktop\\dotNet\\proiect\\TaskManager\\TaskManager.csproj",
-        "packagesPath": "C:\\Users\\helpdesk_admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\helpdesk_admin\\Desktop\\dotNet\\proiect\\TaskManager\\obj\\",
+        "projectPath": "D:\\DAN\\Facultate\\INFO\\DotNet\\proiectTest\\dotNetProiectFinal\\TaskManager\\TaskManager.csproj",
+        "packagesPath": "C:\\Users\\Adi\\.nuget\\packages\\",
+        "outputPath": "D:\\DAN\\Facultate\\INFO\\DotNet\\proiectTest\\dotNetProiectFinal\\TaskManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\helpdesk_admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Adi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://packagesource": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -101,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
